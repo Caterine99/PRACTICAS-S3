@@ -1,0 +1,46 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{vmargin}
+\setpapersize{A4}
+\setmargins{2.5cm}       % margen izquierdo
+{1.5cm}                  % margen superior
+{16.5cm}                 % anchura del texto
+{23.42cm}                % altura del texto
+{10pt}                   % altura de los encabezados
+{1cm}                    % espacio entre el texto y los encabezados
+{0pt}                    % altura del pie de página
+{2cm}                    % espacio entre el texto y el pie de página
+
+
+\begin{document}
+
+\textbf{UNIDAD 3: Práctica 09-Análisis de una variable bidimensional categórica.}
+\vspace{1cm}\\
+
+Ejemplo: Se selecciona aleatoriamente una muestra de 18 personas adultas, para estudiar si existe relación entre su estado civil y su ocupación.\\
+
+\textbf{REALICE UN ANÁLISIS ESTADÍSTICO DE LOS DATOS.}\\
+
+1) Activa tu directorio de trabajo.
+<<>>=
+getwd()
+setwd("C:/Users/user/OneDrive/Paquete R/Practicas-S3")
+@
+
+2) Limpia de objetos el área de trabajo (Workspace).
+<<>>=
+ls()
+rm(list=ls(all=TRUE))
+ls()
+@
+
+3) Crea un nuevo Script y llámale "Script09-DatosBivariados1".\\
+
+4) Crea en Excel una hoja de datos con dos columnas o variables\\
+
+Recuerda que al guardar la hoja, el tipo de archivo es de extensión .csv(delimitado por comas).\\
+
+Llámale al archivo: HojaCat\\
+
+\end{document}
