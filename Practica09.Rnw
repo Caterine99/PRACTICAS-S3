@@ -130,4 +130,62 @@ options(digits=3) #sólo imprime 3 lugares decimales
 options('digits')
 @
 
+Proporciones basadas en el total de la muestra, la suma de filas y columnas suman 1.
+<<>>=
+propTotal<-prop.table(tablaCont)
+propTotal
+barplot(t(propTotal), main="Gráfico de barras (Estado, Ocupación)", xlab="Estado civil\n", ylab="Ocupación", beside=TRUE, legend.text=TRUE)
+@
+
+Proporciones basadas en el total por fila, cada fila suma 1.
+<<>>=
+propFila <- prop.table(tablaCont, 1)
+propFila
+@
+
+Total por fila se indica en 1
+<<>>=
+barplot(t(propFila), main="Gráfico de barras (Estado, Ocupación)", xlab="Estado civil\n", ylab="Ocupación", beside=TRUE, legend.text=TRUE)
+
+@
+
+Proporciones basadas en el total por columna, cada columna suma 1.
+<<>>=
+propColum<-prop.table(tablaCont, 2)
+propColum
+@
+
+Total por columna se indica en 2
+<<>>=
+barplot(propColum, main="Gráfico de barras (Ocupación, Estado)", xlab="Ocupación\n", ylab="Estado civil", beside=TRUE, legend.text=TRUE)
+@
+
+\textbf{9) Otra forma de elaborar los gráficos de barras para el vector bidimensional categórico.}
+
+Gráfico de barras no apiladas y colocación de leyenda
+<<>>=
+barplot(table(Ocupacion, Estado), main="Gráfico de barras (Estado, Ocupación)", xlab ="Estado civil", ylab="Ocupación", beside=TRUE, legend.text=T)
+
+barplot(table(Estado, Ocupacion), main="Gráfico de barras (Ocupación, Estado)", xlab ="Ocupación", ylab="Estado civil", beside=TRUE, legend.text=TRUE)
+
+barplot(table(Estado, Ocupacion), main="Gráfico de barras (Ocupación, Estado)",xlab="Ocupación", ylab="Estado civil", beside=TRUE, legend.text=c("menor que 2", "2-3","mayor que 3"))
+@
+
+\emph{Note que se puede definir a conveniencia la leyenda que se desea incorporar en el gráfico con la instrucción legend.text}
+
+\textbf{10) Realizar la prueba o contraste Chi-cuadrado de independencia}
+
+<<>>=
+prueba<-chisq.test(tablaCont)
+prueba
+@
+
+
+\emph{Tenga en cuenta que las frecuencias esperadas deben ser todas mayores a 5}\\
+
+Frecuencias absolutas esperadas para la prueba Chi-cuadrada
+<<>>=
+prueba$expected # fij = fi./No. column
+@
+
 \end{document}
