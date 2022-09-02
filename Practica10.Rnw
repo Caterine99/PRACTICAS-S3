@@ -1,0 +1,56 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{vmargin}
+\setpapersize{A4}
+\setmargins{2.5cm}       % margen izquierdo
+{1.5cm}                  % margen superior
+{16.5cm}                 % anchura del texto
+{23.42cm}                % altura del texto
+{10pt}                   % altura de los encabezados
+{1cm}                    % espacio entre el texto y los encabezados
+{0pt}                    % altura del pie de página
+{2cm}                    % espacio entre el texto y el pie de página
+
+
+\begin{document}
+
+
+\textbf{UNIDAD 2: Práctica 10-Análisis de una variable bidimensional (categórica, continua)}
+\vspace{1cm}\\
+
+Ejemplo 1: Se están estudiando tres procesos (A, B, C) para fabricar pilas o baterías. Se sospecha que el proceso incide en la duración (en semanas) de las baterías, es decir, que la duración (en semanas) de los procesos es diferente. Se seleccionan aleatoriamente cinco baterías de cada proceso y al medirles aleatoriamente su duración los datos que se obtienen, son los siguientes:\\
+
+Realice un análisis estadístico de los datos.\\
+
+\textbf{\emph{Nota: Cuando los datos bivariados se obtiene de una variable cualitativa y otra cuantitativa, los
+valores cuantitativos de cada categoría o nivel de la variable cualitativa se consideran como
+muestras o grupos diferentes. Cada muestra se describe aplicando la representación y
+medidas de resumen de una variable univariada pero de manera conjunta.}}\\
+
+\textbf{1) Activa tu directorio de trabajo.}
+
+<<>>=
+getwd()
+setwd("C:/Users/user/OneDrive/Paquete R/Practicas-S3")
+@
+
+\textbf{2) Crea un nuevo script y llámale "Script10-DatosBivariados2"}\\
+
+\textbf{3) Crea un vector de datos para cada proceso descrito en el problema.}
+<<>>=
+A<-c(100,96,92,96,92)
+A
+B<-c(76,80,75,84,82)
+B
+C<-c(108,100,96,98,100)
+C
+@
+
+\textbf{4) Crea una hoja de datos teniendo como componentes (columnas) los tres vectores (se puede hacer pues el número de datos en cada proceso es igual, de lo contrario se debería de crear dos variables una para la duración de cada proceso y otra para identificar a qué proceso corresponde).}
+<<>>=
+Baterias<-data.frame(procesoA=A, procesoB=B, procesoC=C)
+Baterias
+@
+
+\end{document}
