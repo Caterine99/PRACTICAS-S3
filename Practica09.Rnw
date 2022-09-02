@@ -22,7 +22,7 @@ Ejemplo: Se selecciona aleatoriamente una muestra de 18 personas adultas, para e
 
 \textbf{REALICE UN ANÁLISIS ESTADÍSTICO DE LOS DATOS.}\\
 
-1) Activa tu directorio de trabajo.
+\emph{1) Activa tu directorio de trabajo.}
 <<>>=
 getwd()
 setwd("C:/Users/user/OneDrive/Paquete R/Practicas-S3")
@@ -35,12 +35,99 @@ rm(list=ls(all=TRUE))
 ls()
 @
 
-3) Crea un nuevo Script y llámale "Script09-DatosBivariados1".\\
+\textbf{3) Crea un nuevo Script y llámale "Script09-DatosBivariados1".}\\
 
-4) Crea en Excel una hoja de datos con dos columnas o variables\\
+\textbf{4) Crea en Excel una hoja de datos con dos columnas o variables}\\
 
 Recuerda que al guardar la hoja, el tipo de archivo es de extensión .csv(delimitado por comas).\\
 
 Llámale al archivo: HojaCat\\
+
+Otra forma de crear la hoja de datos es la siguiente (Vea la Práctica 04):\\
+
+Primero crear las dos variables categóricas en un editor de texto como NotePad o WordPad, colocando nombre a cada columna, y llamándole "HojaCat.txt".\\
+
+Luego puede leer o recuperar este archivo con la función read.table()
+<<>>=
+
+HojaCat <- read.table("HojaCat.txt", header=TRUE)
+HojaCat
+@
+
+
+\textbf{5) Recupera desde el entorno de R la hoja de datos de Excel.}
+
+
+<<>>=
+HojaCat<-read.csv("HojaCat.csv", strip.white=TRUE)
+HojaCat
+@
+
+
+\textbf{6) Conecta la hoja de datos a la segunda ruta o lista de búsqueda.}
+<<>>=
+attach(HojaCat, pos=2) #pos especifica la posición donde buscar la conexión
+search()
+@
+
+\textbf{7) Crea una tabla de contigencia o de doble entrada}
+
+<<>>=
+tablaCont<-table(HojaCat)
+tablaCont
+
+length(HojaCat)
+@
+
+\emph{Note que esta instrucción no devuelve el número de elementos, sino más bien el número de variables o columnas consideradas en el conjunto de datos.}\\
+
+Encuentra la suma de cada fila de la tabla de contingencia\\
+
+Distribución marginal de X=Estado civil
+<<>>=
+suma.filas<-apply(tablaCont, 1, sum)# El 1 indica que son totales por fila
+suma.filas
+
+@
+
+Encuentra la suma de cada fila de la tabla de contingencia\\
+
+distribución marginal de Y=Ocupación
+<<>>=
+suma.columnas<-apply(tablaCont,2,sum)# 2 indica que son totales por columna
+suma.columnas
+@
+
+\textbf{Gráficos de barras para tabla de contingencia.}\\
+Barras apiladas
+<<>>=
+barplot(t(tablaCont), main="Gráfico de barras (Estado, Ocupación)", xlab="Estado civil",ylab="Ocupación", legend.text=TRUE)
+@
+
+\emph{Note que t(tablaCont) indica que las barras representan el Estado civil de los encuestados y que éstas se subdividen en cada una de las diferentes ocupaciones consideradas.}\\
+
+\emph{ En caso de usar únicamente tablaCont; las barras representarán las diferentes ocupaciones y éstas estarán subdividas en cada uno de los estados civiles.}\\
+
+Barras agrupadas
+
+<<>>=
+barplot(t(tablaCont), main="Gráfico de barras (Estado, Ocupación)", xlab="Estado civil", ylab="Ocupación", beside=TRUE, legend.text=TRUE)
+@
+
+\emph{Note que la instrucción beside =TRUE, indica que por cada una de las diferentes ocupaciones se creará una barra para cada estado civil. Note que al usar beside =FALSE se obtiene el mismo gráfico de la instrucción anterior.}
+
+<<>>=
+barplot(tablaCont, main="Gráfico de barras (Ocupación, Estado)", xlab="Ocupación\n", ylab="Estado civil", beside=TRUE, legend.text=TRUE)
+@
+
+
+\textbf{8) Calcula tablas de proporciones o de probabilidades}\\
+
+Guardar las todas las opciones iniciales y modificar número de decimales
+<<>>=
+op<-options()
+options(digits=3) #sólo imprime 3 lugares decimales
+options('digits')
+@
 
 \end{document}
